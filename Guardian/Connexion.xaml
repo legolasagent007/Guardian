@@ -1,0 +1,40 @@
+﻿<controls:MetroWindow x:Name="Connexion" x:Class="Guardian.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+        Title="Connexion" Height="380.882" Width="358.294" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" ToolTip="Fenêtre de connexion" WindowStyle="ThreeDBorderWindow" Icon="Image/animal-un-bogue-insectes-icone-4981.ico" Loaded="Connexion_Loaded">
+    <controls:MetroWindow.RightWindowCommands>
+        <controls:WindowCommands>
+            <Button>
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Width="20" Height="20"
+                   Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Fill"
+                         Visual="{StaticResource appbar_alien}" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                </StackPanel>
+            </Button>
+        </controls:WindowCommands>
+    </controls:MetroWindow.RightWindowCommands>
+    <Grid >
+        <controls:MetroProgressBar IsIndeterminate="True" Margin="-10,314,10,12" Height="26" RenderTransformOrigin="0.5,0.5" EllipseDiameter="6" EllipseOffset="6">
+            <controls:MetroProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </controls:MetroProgressBar.RenderTransform>
+        </controls:MetroProgressBar>
+       
+        <Button x:Name="btconnexion" Content="Connexion" HorizontalAlignment="Left" Margin="200,261,0,0" VerticalAlignment="Top" Width="112" Height="37" IsDefault="True" ToolTip="Cliquez pour vous connecter" Click="btconnexion_Click"/>
+        <Label x:Name="lbid" Content="Identifiant" HorizontalAlignment="Left" Height="30" Margin="33,80,0,0" VerticalAlignment="Top" Width="86" FontFamily="arial" FontSize="14" FontWeight="Bold"/>
+        <Label Content="Mot de passe" HorizontalAlignment="Left" Height="30" Margin="12,163,0,0" VerticalAlignment="Top" Width="107" FontWeight="Bold" FontFamily="Arial" FontSize="14"/>
+        <PasswordBox x:Name="TbBox" HorizontalAlignment="Left" Height="30" Margin="147,163,0,0" VerticalAlignment="Top" Width="165" FontFamily="Arial" FontSize="14" ToolTip="Mot de passe de l'utilisateur" controls:PasswordBoxHelper.CapsLockWarningToolTip="La touche MAJ est enfoncée"/>
+        <TextBox x:Name="tbid" HorizontalAlignment="Left" Height="30" Margin="147,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="165" ToolTip="Identifiant de l'utilisateur" FontFamily="Arial" FontSize="14"/>
+        
+    </Grid>
+</controls:MetroWindow>

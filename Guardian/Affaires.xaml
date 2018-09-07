@@ -1,0 +1,149 @@
+﻿<controls:MetroWindow
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+       xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" x:Name="Affaires1" x:Class="Guardian.Affaires"
+        Title="Affaires" Height="719.7" Width="1302" Icon="Image/animal-un-bogue-insectes-icone-4981.ico" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" FontFamily="Arial" FontSize="14" Loaded="Affaires1_Loaded" Closing="Affaires1_Closing">
+    <controls:MetroWindow.RightWindowCommands>
+        <controls:WindowCommands>
+            <Button>
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Width="20" Height="20"
+                   Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}}}">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Fill"
+                         Visual="{StaticResource appbar_cupcake}" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                </StackPanel>
+            </Button>
+        </controls:WindowCommands>
+    </controls:MetroWindow.RightWindowCommands>
+    <Grid>
+        <controls:MetroTabControl x:Name="tabcrim" IsSynchronizedWithCurrentItem="True" TabStripPlacement="Left">
+            <controls:MetroTabItem x:Name="newcase" Header="Nouvelle Affaire" ToolTip="Créer une nouvelle affaire">
+                <Grid  Background="#FFB8B8B8">
+                    <GroupBox Header="Informations de base sur le plaignant" HorizontalAlignment="Left" Height="352" Margin="14,12,0,0" VerticalAlignment="Top" Width="700" ToolTip="Donnez les informations de base sur l'affaire" RenderTransformOrigin="0.5,0.5">
+                        <GroupBox.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform AngleY="0.224"/>
+                                <RotateTransform/>
+                                <TranslateTransform Y="0.996"/>
+                            </TransformGroup>
+                        </GroupBox.RenderTransform>
+                        <Grid Margin="0,0,-2,0">
+                            <Label x:Name="lbcodaff" Content="Code affaire" Margin="58,10,533,278"/>
+                            <TextBox x:Name="tbcodaff" Margin="161,10,346,278" TextChanged="tbcodaff_TextChanged" FontFamily="Arial" FontSize="14"/>
+                            <Label x:Name="lbnom" Content="Nom du plaignant" Margin="28,71,533,217"/>
+                            <Label x:Name="lbpren" Content="Prenom du plaignant" Margin="10,120,533,168"/>
+                            <Label x:Name="lbcontact" Content="Contact" Margin="94,172,533,116"/>
+                            <Label x:Name="lbadress" Content="Adresse" Margin="94,244,533,44"/>
+                            <Label x:Name="lbdate" Content="Date dépôt" Margin="388,71,217,217" ToolTip="date de dépôt de la plainte"/>
+                            <TextBox x:Name="tbnom" Margin="161,71,346,217" TextChanged="tbnom_TextChanged" FontFamily="Arial"/>
+                            <TextBox x:Name="tbpren" Margin="161,120,346,168" TextChanged="tbpren_TextChanged" FontFamily="Arial"/>
+                            <TextBox x:Name="tbadre" Margin="161,244,346,44" ToolTipOpening="tbadre_ToolTipOpening" FontFamily="Arial"/>
+                            <xctk:MaskedTextBox x:Name="tbcont" Margin="161,172,346,116" TextChanged="tbcont_TextChanged" Mask="00000000000"/>
+                            <DatePicker x:Name="dtdepot" HorizontalAlignment="Left" Height="29" Margin="479,71,0,0" VerticalAlignment="Top" Width="183" SelectedDateFormat="Short" SelectedDateChanged="dtdepot_SelectedDateChanged" FontFamily="Arial"/>
+                            <CheckBox x:Name="chkconvoq" Content="Convocation remise" HorizontalAlignment="Left" Height="39" Margin="479,246,0,0" VerticalAlignment="Top" Width="175" ToolTip="Préciez si une convocation a été remise ou pas, ces renseignements sont optionnels" FontFamily="Arial" FontSize="14" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
+                            <Label x:Name="lb_prof" Content="Profession" Margin="388,115,217,173"/>
+                            <TextBox x:Name="tb_prof" Margin="479,115,28,173" ToolTip="Profession du plaignant" TextChanged="tb_prof_TextChanged" FontFamily="Arial"/>
+                            <Label x:Name="lboblig" Content="*" HorizontalAlignment="Left" Height="27" Margin="344,10,0,0" VerticalAlignment="Top" Width="18" Background="#FFBBAFAF" Foreground="#FFE01212" FontWeight="Bold" ToolTip="Champ obligatoire"/>
+                            <Label x:Name="lboblig_Copy" Content="*" HorizontalAlignment="Left" Height="27" Margin="344,71,0,0" VerticalAlignment="Top" Width="18" Background="#FFBBAFAF" Foreground="#FFE01212" FontWeight="Bold" ToolTip="Champ obligatoire"/>
+                            <Label x:Name="lboblig_Copy1" Content="*" HorizontalAlignment="Left" Height="27" Margin="349,120,0,0" VerticalAlignment="Top" Width="18" Background="#FFBBAFAF" Foreground="#FFE01212" FontWeight="Bold" ToolTip="Champ obligatoire"/>
+                            <Label x:Name="lboblig_Copy2" Content="*" HorizontalAlignment="Left" Height="27" Margin="344,172,0,0" VerticalAlignment="Top" Width="18" Background="#FFBBAFAF" Foreground="#FFE01212" FontWeight="Bold" ToolTip="Champ obligatoire"/>
+                            <Label x:Name="lboblig_Copy3" Content="*" HorizontalAlignment="Left" Height="27" Margin="344,244,0,0" VerticalAlignment="Top" Width="18" Background="#FFBBAFAF" Foreground="#FFE01212" FontWeight="Bold" ToolTip="Champ obligatoire"/>
+                            <Label x:Name="lboblig_Copy4" Content="*" HorizontalAlignment="Left" Height="27" Margin="662,73,0,0" VerticalAlignment="Top" Width="18" Background="#FFBBAFAF" Foreground="#FFE01212" FontWeight="Bold" ToolTip="Champ obligatoire"/>
+                            <Label x:Name="lboblig_Copy5" Content="*" HorizontalAlignment="Left" Height="27" Margin="1034,341,-362,-53" VerticalAlignment="Top" Width="18" Background="#FFBBAFAF" Foreground="#FFE01212" FontWeight="Bold" ToolTip="Champ obligatoire"/>
+                            <CheckBox x:Name="ckaff" Content="Affaire classée" HorizontalAlignment="Left" Height="42" Margin="479,199,0,0" VerticalAlignment="Top" Width="175" ToolTip="Précisez si l'affaire que vous enregistrez est classée ou pas encore" FontFamily="Arial" FontSize="14"/>
+
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Header="Document relatif à l'affaire" HorizontalAlignment="Left" Height="251" Margin="10,384,0,0" VerticalAlignment="Top" Width="580">
+                        <Grid HorizontalAlignment="Left" Height="210" VerticalAlignment="Top" Width="570" Margin="0,10,-2,-6">
+                            <Button x:Name="btimportfile" Margin="10,39,436,129" Content="Ajouter fichiers" Click="btimportfile_Click"/>
+                            <DataGrid x:Name="dgridelmts" Margin="241,-10,10,10" Style="{StaticResource AzureDataGrid}" GridLinesVisibility="All" IsSynchronizedWithCurrentItem="True" AreRowDetailsFrozen="True" SelectionMode="Single" IsTextSearchEnabled="True" MouseDoubleClick="dgridelmts_MouseDoubleClick"/>
+                            <Button x:Name="btdelfile" Margin="10,114,436,48" Content="Retirer des fichiers" Click="btdelfile_Click"/>
+
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Header="Description de l'affaire" HorizontalAlignment="Left" Height="253" Margin="606,384,0,0" VerticalAlignment="Top" Width="449">
+                        <RichTextBox x:Name="rchaff" HorizontalAlignment="Left" Height="202" Margin="10,10,0,0" VerticalAlignment="Top" Width="423" IsDocumentEnabled="True" FontFamily="Arial" FontSize="14" ToolTip="Précisez brièvement de quoi traite l'affaire" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
+                            <FlowDocument Language="en-fr">
+                                <Paragraph/>
+                            </FlowDocument>
+                        </RichTextBox>
+                    </GroupBox>
+                    <GroupBox x:Name="gboxconvoc" Header="en cas de convocation" HorizontalAlignment="Left" Height="349" Margin="731,10,0,0" VerticalAlignment="Top" Width="324" ToolTip="cette boîte s'activera si vous cochez la case &quot;convocation remise&quot;">
+                        <Grid HorizontalAlignment="Left" Width="284">
+                            <Label Margin="38,31,192,255" Content="Cause"/>
+                            <TextBox x:Name="tbcause" Margin="69,55,32,225" ToolTip="Cause de la convocation" RenderTransformOrigin="0.5,0.5" TextChanged="tbcause_TextChanged" FontFamily="Arial">
+                                <TextBox.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="-0.23"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </TextBox.RenderTransform>
+                            </TextBox>
+                            <Label x:Name="tbconvoque" Margin="38,119,192,167" Content="Nom" ToolTip="Nom de la personne convoqué"/>
+                            <TextBox x:Name="tbconce" Margin="69,150,32,130" ToolTip="Nom de la personne convoqué" FontFamily="Arial" TextChanged="tbconce_TextChanged"/>
+                            <Label x:Name="lbprof" Margin="10,213,103,73" Content="Profession du convoqué" ToolTip="Nom de la personne convoqué"/>
+                            <TextBox x:Name="tbprof" Margin="69,244,32,36" ToolTip="Nom de la personne convoqué" FontFamily="Arial" TextChanged="tbprof_TextChanged"/>
+                        </Grid>
+                    </GroupBox>
+                    <Button x:Name="tb_val" Style="{DynamicResource SquareButtonStyle}" Content="Enregistrer affaire" HorizontalAlignment="Left" Height="39" Margin="822,642,0,0" VerticalAlignment="Top" Width="135" IsDefault="True" ToolTip="Enregistrer l'affaire" Click="tb_val_Click"/>
+                    <Button x:Name="btannulaff" Style="{DynamicResource SquareButtonStyle}" Content="Annuler" HorizontalAlignment="Left" Height="39" Margin="338,642,0,0" VerticalAlignment="Top" Width="154" IsCancel="True" ToolTip="annuler l'enregistrement" Click="btannulaff_Click"/>
+
+                </Grid>
+            </controls:MetroTabItem>
+            <controls:MetroTabItem x:Name="listcase" Header="Liste des Affaires" ToolTip="Afficher la liste des affaires pour modification" GotFocus="listcase_GotFocus">
+                <Grid Margin="0,10,16,12" Background="#FFB8B8B8">
+                    <DataGrid x:Name="listaff" AlternationCount="-7" Style="{StaticResource AzureDataGrid}" IsSynchronizedWithCurrentItem="True" Margin="12,82,8,70" IsTextSearchEnabled="True" ToolTip="Liste des diverses affaires créées" GridLinesVisibility="All" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" AreRowDetailsFrozen="True" EnableColumnVirtualization="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding id_aff}" Visibility="Hidden"/>
+                            <DataGridTextColumn Binding="{Binding cd_aff}" ClipboardContentBinding="{x:Null}" Header="Code affaire" Width="Auto"/>
+                            <DataGridTextColumn Binding="{Binding n_plaign}" ClipboardContentBinding="{x:Null}" Header="Nom plaignant" Width="Auto"/>
+                            <DataGridTextColumn Binding="{Binding p_plaign}" ClipboardContentBinding="{x:Null}" Header="Prénom Plaignant" Width="Auto"/>
+                            <DataGridTextColumn Binding="{Binding con_plaign}" ClipboardContentBinding="{x:Null}" Header="Contact" Width="Auto"/>
+                            <DataGridTextColumn Binding="{Binding ad_plaign}" ClipboardContentBinding="{x:Null}" Header="Adresse" Width="Auto"/>
+                            <DataGridTextColumn Binding="{Binding depo_plaign}" ClipboardContentBinding="{x:Null}" Header="Date dépôt" Width="Auto"/>
+                            <DataGridCheckBoxColumn  Binding="{Binding class_plaign, Mode=OneWay}" ElementStyle="{DynamicResource MetroDataGridCheckBox}" EditingElementStyle="{DynamicResource MetroDataGridCheckBox}" ClipboardContentBinding="{x:Null}" Header="Classée" IsReadOnly="True" />
+                            <DataGridTextColumn Binding="{Binding affdesc}" ClipboardContentBinding="{x:Null}" Header="Description affaire" Width="Auto"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button x:Name="tbmodifaff" Content="Modifier " HorizontalAlignment="Left" Height="33" Margin="752,626,0,0" VerticalAlignment="Top" Width="126" ToolTip="Ajouter de nouveaux élements à l'affaire" IsDefault="True" Click="tbmodifaff_Click"/>
+                    <Button x:Name="tbraffraichaff" Content="Raffraichir" HorizontalAlignment="Left" Height="33" Margin="508,626,0,0" VerticalAlignment="Top" Width="120" ToolTip="Cliquez pour raffraichir la liste des affaires " Click="tbraffraichaff_Click"/>
+                    <Button x:Name="tbdetailaff" Style="{StaticResource AccentedSquareButtonStyle}" Content="Details de l'affaire" HorizontalAlignment="Left" Height="33" Margin="34,626,0,0" VerticalAlignment="Top" Width="145" IsCancel="True" ToolTip="cliquez pour avois plus de détails concernant une affaire" Click="tbdetailaff_Click"/>
+                    <Label Content="Code affaire" HorizontalAlignment="Left" Height="26" Margin="24,36,0,0" VerticalAlignment="Top" Width="88"/>
+                    <TextBox x:Name="filtcdaff" HorizontalAlignment="Left" Height="26" Margin="117,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="104" TextChanged="filtcdaff_TextChanged"/>
+                    <Label Content="Nom plaignant" HorizontalAlignment="Left" Height="26" Margin="290,36,0,0" VerticalAlignment="Top" Width="101"/>
+                    <TextBox x:Name="filnomplai" HorizontalAlignment="Left" Height="26" Margin="396,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112" TextChanged="filnomplai_TextChanged"/>
+                    <Button x:Name="btcancel" Content="Annuler" HorizontalAlignment="Left" Height="26" Margin="573,36,0,0" VerticalAlignment="Top" Width="98" Click="btcancel_Click"/>
+                    <Button x:Name="tbfiltr" Content="Filtrer" HorizontalAlignment="Left" Height="26" Margin="720,36,0,0" VerticalAlignment="Top" Width="86" RenderTransformOrigin="0.5,0.5" Click="tbfiltr_Click">
+                        <Button.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="0.898"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Button.RenderTransform>
+                    </Button>
+                </Grid>
+            </controls:MetroTabItem>
+            <controls:MetroTabItem Header="Liste des états" ToolTip="Listes des états possibles" >
+                <Grid Margin="0,28,16,16" Background="#FFB8B8B8">
+
+                    <dx:SimpleButton x:Name="btetat1" HorizontalAlignment="Left" Height="114" Margin="46,100,0,0" VerticalAlignment="Top" Width="308" Content="Liste des affaires dans Guardian" Click="btetat1_Click"/>
+                    <dx:SimpleButton x:Name="btetat2" Content="Liste des affaires classées" HorizontalAlignment="Left" Height="114" Margin="614,100,0,0" VerticalAlignment="Top" Width="308" Click="btetat2_Click"/>
+                    <dx:SimpleButton x:Name="btetat3" Content="Liste des affaires non classées" HorizontalAlignment="Left" Height="108" VerticalAlignment="Top" Width="308" Margin="46,269,0,0"/>
+                    <dx:SimpleButton x:Name="btetat4" Content="Etat d'une affaire en fonction de son code" HorizontalAlignment="Left" Height="108" Margin="614,269,0,0" VerticalAlignment="Top" Width="308" Click="btetat4_Click"/>
+
+                </Grid>
+            </controls:MetroTabItem>
+        </controls:MetroTabControl>
+    </Grid>
+</controls:MetroWindow>

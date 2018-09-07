@@ -1,0 +1,519 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="GuardianModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AdresseSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pays" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ville" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="quartier" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="latitude" Type="float" Nullable="false" />
+          <Property Name="longitude" Type="float" Nullable="false" />
+          <Property Name="altitude" Type="float" />
+          <Property Name="precision" Type="nvarchar(max)" />
+          <Property Name="CRIMINELId_crim" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CRIMINEL">
+          <Key>
+            <PropertyRef Name="Id_crim" />
+          </Key>
+          <Property Name="Id_crim" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="matricul_crim" Type="varchar" MaxLength="5" />
+          <Property Name="nom_crim" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="prenom_crim" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="datenaiss_crim" Type="datetime" Nullable="false" />
+          <Property Name="typ_piece" Type="varchar" MaxLength="25" />
+          <Property Name="num_piece" Type="varchar" MaxLength="14" />
+          <Property Name="crim_nationa" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="crim_profes" Type="varchar" MaxLength="30" />
+          <Property Name="date_enreg" Type="datetime" Nullable="false" />
+          <Property Name="photo_crim" Type="varbinary(max)" />
+          <Property Name="deffere" Type="bit" />
+          <Property Name="crim_taill" Type="decimal" Precision="3" Scale="3" />
+          <Property Name="crim_poid" Type="decimal" Precision="3" Scale="3" />
+          <Property Name="contatct_crim" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="DELIT">
+          <Key>
+            <PropertyRef Name="Id_delit" />
+          </Key>
+          <Property Name="Id_delit" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom_delit" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="CRIMINELId_crim" Type="int" Nullable="false" />
+          <Property Name="lieu_delit" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="DOCUMENTS">
+          <Key>
+            <PropertyRef Name="Id_doc" />
+          </Key>
+          <Property Name="Id_doc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="doc" Type="varbinary(max)" Nullable="false" />
+          <Property Name="PLAINTEId_aff" Type="int" Nullable="false" />
+          <Property Name="docname" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LOG">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="identifiant_log" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="nom_log" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="grade" Type="varchar" MaxLength="30" />
+          <Property Name="date_log" Type="datetime" Nullable="false" />
+          <Property Name="user_photo" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="PLAIGNANT">
+          <Key>
+            <PropertyRef Name="Id_plaignant" />
+          </Key>
+          <Property Name="Id_plaignant" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom_plai" Type="varchar(max)" Nullable="false" />
+          <Property Name="prenom_plai" Type="varchar(max)" Nullable="false" />
+          <Property Name="contact_plai" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="adress_plai" Type="varchar(max)" Nullable="false" />
+          <Property Name="professi_plai" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="PLAINTE">
+          <Key>
+            <PropertyRef Name="Id_aff" />
+          </Key>
+          <Property Name="Id_aff" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descrip_aff" Type="varchar(max)" Nullable="false" />
+          <Property Name="cause_aff" Type="varchar(max)" />
+          <Property Name="professconvo" Type="varchar(max)" />
+          <Property Name="nom_convoc" Type="varchar(max)" />
+          <Property Name="PLAIGNANTId_plaignant" Type="int" Nullable="false" />
+          <Property Name="code_aff" Type="varchar(max)" Nullable="false" />
+          <Property Name="date_aff" Type="datetime" Nullable="false" />
+          <Property Name="classe" Type="bit" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="id_user" />
+          </Key>
+          <Property Name="id_user" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom_user" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="prenom_user" Type="varchar" MaxLength="15" />
+          <Property Name="dob_user" Type="datetime" Nullable="false" />
+          <Property Name="mail_user" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="contact" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="grade_user" Type="varchar" MaxLength="15" />
+          <Property Name="identifiant_user" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="psswrd_user" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="photo_user" Type="varbinary(max)" />
+          <Property Name="actif" Type="bit" Nullable="false" />
+          <Property Name="profil" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CRIMINELAdresse">
+          <End Role="CRIMINEL" Type="Self.CRIMINEL" Multiplicity="1" />
+          <End Role="AdresseSet" Type="Self.AdresseSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CRIMINEL">
+              <PropertyRef Name="Id_crim" />
+            </Principal>
+            <Dependent Role="AdresseSet">
+              <PropertyRef Name="CRIMINELId_crim" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CRIMINELDELIT">
+          <End Role="CRIMINEL" Type="Self.CRIMINEL" Multiplicity="1" />
+          <End Role="DELIT" Type="Self.DELIT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CRIMINEL">
+              <PropertyRef Name="Id_crim" />
+            </Principal>
+            <Dependent Role="DELIT">
+              <PropertyRef Name="CRIMINELId_crim" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PLAIGNANTPLAINTE">
+          <End Role="PLAIGNANT" Type="Self.PLAIGNANT" Multiplicity="1" />
+          <End Role="PLAINTE" Type="Self.PLAINTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PLAIGNANT">
+              <PropertyRef Name="Id_plaignant" />
+            </Principal>
+            <Dependent Role="PLAINTE">
+              <PropertyRef Name="PLAIGNANTId_plaignant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PLAINTEDOCUMENTS">
+          <End Role="PLAINTE" Type="Self.PLAINTE" Multiplicity="1" />
+          <End Role="DOCUMENTS" Type="Self.DOCUMENTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PLAINTE">
+              <PropertyRef Name="Id_aff" />
+            </Principal>
+            <Dependent Role="DOCUMENTS">
+              <PropertyRef Name="PLAINTEId_aff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GuardianModelStoreContainer">
+          <EntitySet Name="AdresseSet" EntityType="Self.AdresseSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CRIMINEL" EntityType="Self.CRIMINEL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DELIT" EntityType="Self.DELIT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DOCUMENTS" EntityType="Self.DOCUMENTS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOG" EntityType="Self.LOG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PLAIGNANT" EntityType="Self.PLAIGNANT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PLAINTE" EntityType="Self.PLAINTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USER" EntityType="Self.USER" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CRIMINELAdresse" Association="Self.FK_CRIMINELAdresse">
+            <End Role="CRIMINEL" EntitySet="CRIMINEL" />
+            <End Role="AdresseSet" EntitySet="AdresseSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CRIMINELDELIT" Association="Self.FK_CRIMINELDELIT">
+            <End Role="CRIMINEL" EntitySet="CRIMINEL" />
+            <End Role="DELIT" EntitySet="DELIT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PLAIGNANTPLAINTE" Association="Self.FK_PLAIGNANTPLAINTE">
+            <End Role="PLAIGNANT" EntitySet="PLAIGNANT" />
+            <End Role="PLAINTE" EntitySet="PLAINTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PLAINTEDOCUMENTS" Association="Self.FK_PLAINTEDOCUMENTS">
+            <End Role="PLAINTE" EntitySet="PLAINTE" />
+            <End Role="DOCUMENTS" EntitySet="DOCUMENTS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GuardianModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CRIMINEL">
+          <Key>
+            <PropertyRef Name="Id_crim" />
+          </Key>
+          <Property Name="Id_crim" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="matricul_crim" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Name="nom_crim" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prenom_crim" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="datenaiss_crim" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="typ_piece" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="num_piece" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="crim_nationa" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="crim_profes" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="date_enreg" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="photo_crim" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="deffere" Type="Boolean" />
+          <Property Name="crim_taill" Type="Decimal" Precision="3" Scale="3" />
+          <Property Name="crim_poid" Type="Decimal" Precision="3" Scale="3" />
+          <NavigationProperty Name="DELIT" Relationship="GuardianModel.CRIMINELDELIT" FromRole="CRIMINEL" ToRole="DELIT" />
+          <Property Name="contatct_crim" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Adresse" Relationship="GuardianModel.CRIMINELAdresse" FromRole="CRIMINEL" ToRole="Adresse" />
+        </EntityType>
+        <EntityType Name="DELIT">
+          <Key>
+            <PropertyRef Name="Id_delit" />
+          </Key>
+          <Property Name="Id_delit" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom_delit" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CRIMINEL" Relationship="GuardianModel.CRIMINELDELIT" FromRole="DELIT" ToRole="CRIMINEL" />
+          <Property Name="CRIMINELId_crim" Type="Int32" Nullable="false" />
+          <Property Name="lieu_delit" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="DOCUMENTS">
+          <Key>
+            <PropertyRef Name="Id_doc" />
+          </Key>
+          <Property Name="Id_doc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="doc" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <NavigationProperty Name="PLAINTE" Relationship="GuardianModel.PLAINTEDOCUMENTS" FromRole="DOCUMENTS" ToRole="PLAINTE" />
+          <Property Name="PLAINTEId_aff" Type="Int32" Nullable="false" />
+          <Property Name="docname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="LOG">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="identifiant_log" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nom_log" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="grade" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="date_log" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="user_photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="PLAIGNANT">
+          <Key>
+            <PropertyRef Name="Id_plaignant" />
+          </Key>
+          <Property Name="Id_plaignant" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom_plai" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prenom_plai" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="contact_plai" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="adress_plai" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="professi_plai" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PLAINTE" Relationship="GuardianModel.PLAIGNANTPLAINTE" FromRole="PLAIGNANT" ToRole="PLAINTE" />
+        </EntityType>
+        <EntityType Name="PLAINTE">
+          <Key>
+            <PropertyRef Name="Id_aff" />
+          </Key>
+          <Property Name="Id_aff" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descrip_aff" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cause_aff" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="professconvo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="nom_convoc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PLAIGNANT" Relationship="GuardianModel.PLAIGNANTPLAINTE" FromRole="PLAINTE" ToRole="PLAIGNANT" />
+          <Property Name="PLAIGNANTId_plaignant" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DOCUMENTS" Relationship="GuardianModel.PLAINTEDOCUMENTS" FromRole="PLAINTE" ToRole="DOCUMENTS" />
+          <Property Name="code_aff" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="date_aff" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="classe" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="id_user" />
+          </Key>
+          <Property Name="id_user" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom_user" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prenom_user" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="dob_user" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="mail_user" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="contact" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="grade_user" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="identifiant_user" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="psswrd_user" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="photo_user" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="actif" Type="Boolean" Nullable="false" />
+          <Property Name="profil" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityContainer Name="GuardianEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CRIMINEL" EntityType="Self.CRIMINEL" />
+          <EntitySet Name="DELIT" EntityType="Self.DELIT" />
+          <EntitySet Name="DOCUMENTS" EntityType="Self.DOCUMENTS" />
+          <EntitySet Name="LOG" EntityType="Self.LOG" />
+          <EntitySet Name="PLAIGNANT" EntityType="Self.PLAIGNANT" />
+          <EntitySet Name="PLAINTE" EntityType="Self.PLAINTE" />
+          <EntitySet Name="USER" EntityType="Self.USER" />
+          <AssociationSet Name="CRIMINELDELIT" Association="GuardianModel.CRIMINELDELIT">
+            <End Role="CRIMINEL" EntitySet="CRIMINEL" />
+            <End Role="DELIT" EntitySet="DELIT" />
+          </AssociationSet>
+          <AssociationSet Name="PLAIGNANTPLAINTE" Association="GuardianModel.PLAIGNANTPLAINTE">
+            <End Role="PLAIGNANT" EntitySet="PLAIGNANT" />
+            <End Role="PLAINTE" EntitySet="PLAINTE" />
+          </AssociationSet>
+          <AssociationSet Name="PLAINTEDOCUMENTS" Association="GuardianModel.PLAINTEDOCUMENTS">
+            <End Role="PLAINTE" EntitySet="PLAINTE" />
+            <End Role="DOCUMENTS" EntitySet="DOCUMENTS" />
+          </AssociationSet>
+          <EntitySet Name="AdresseSet" EntityType="GuardianModel.Adresse" />
+          <AssociationSet Name="CRIMINELAdresse" Association="GuardianModel.CRIMINELAdresse">
+            <End Role="CRIMINEL" EntitySet="CRIMINEL" />
+            <End Role="Adresse" EntitySet="AdresseSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="CRIMINELDELIT">
+          <End Type="GuardianModel.CRIMINEL" Role="CRIMINEL" Multiplicity="1" />
+          <End Type="GuardianModel.DELIT" Role="DELIT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CRIMINEL">
+              <PropertyRef Name="Id_crim" />
+            </Principal>
+            <Dependent Role="DELIT">
+              <PropertyRef Name="CRIMINELId_crim" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PLAIGNANTPLAINTE">
+          <End Type="GuardianModel.PLAIGNANT" Role="PLAIGNANT" Multiplicity="1" />
+          <End Type="GuardianModel.PLAINTE" Role="PLAINTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PLAIGNANT">
+              <PropertyRef Name="Id_plaignant" />
+            </Principal>
+            <Dependent Role="PLAINTE">
+              <PropertyRef Name="PLAIGNANTId_plaignant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PLAINTEDOCUMENTS">
+          <End Type="GuardianModel.PLAINTE" Role="PLAINTE" Multiplicity="1" />
+          <End Type="GuardianModel.DOCUMENTS" Role="DOCUMENTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PLAINTE">
+              <PropertyRef Name="Id_aff" />
+            </Principal>
+            <Dependent Role="DOCUMENTS">
+              <PropertyRef Name="PLAINTEId_aff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Adresse">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pays" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ville" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="quartier" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="latitude" Type="Double" Nullable="false" />
+          <Property Name="longitude" Type="Double" Nullable="false" />
+          <Property Name="altitude" Type="Double" Nullable="true" />
+          <Property Name="precision" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="CRIMINEL" Relationship="GuardianModel.CRIMINELAdresse" FromRole="Adresse" ToRole="CRIMINEL" />
+          <Property Name="CRIMINELId_crim" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="CRIMINELAdresse">
+          <End Type="GuardianModel.CRIMINEL" Role="CRIMINEL" Multiplicity="1" />
+          <End Type="GuardianModel.Adresse" Role="Adresse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CRIMINEL">
+              <PropertyRef Name="Id_crim" />
+            </Principal>
+            <Dependent Role="Adresse">
+              <PropertyRef Name="CRIMINELId_crim" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GuardianModelStoreContainer" CdmEntityContainer="GuardianEntities1">
+    <EntitySetMapping Name="CRIMINEL">
+      <EntityTypeMapping TypeName="IsTypeOf(GuardianModel.CRIMINEL)">
+        <MappingFragment StoreEntitySet="CRIMINEL">
+          <ScalarProperty Name="Id_crim" ColumnName="Id_crim" />
+          <ScalarProperty Name="matricul_crim" ColumnName="matricul_crim" />
+          <ScalarProperty Name="nom_crim" ColumnName="nom_crim" />
+          <ScalarProperty Name="prenom_crim" ColumnName="prenom_crim" />
+          <ScalarProperty Name="datenaiss_crim" ColumnName="datenaiss_crim" />
+          <ScalarProperty Name="typ_piece" ColumnName="typ_piece" />
+          <ScalarProperty Name="num_piece" ColumnName="num_piece" />
+          <ScalarProperty Name="crim_nationa" ColumnName="crim_nationa" />
+          <ScalarProperty Name="crim_profes" ColumnName="crim_profes" />
+          <ScalarProperty Name="date_enreg" ColumnName="date_enreg" />
+          <ScalarProperty Name="photo_crim" ColumnName="photo_crim" />
+          <ScalarProperty Name="deffere" ColumnName="deffere" />
+          <ScalarProperty Name="crim_taill" ColumnName="crim_taill" />
+          <ScalarProperty Name="crim_poid" ColumnName="crim_poid" />
+          <ScalarProperty Name="contatct_crim" ColumnName="contatct_crim" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DELIT">
+      <EntityTypeMapping TypeName="IsTypeOf(GuardianModel.DELIT)">
+        <MappingFragment StoreEntitySet="DELIT">
+          <ScalarProperty Name="Id_delit" ColumnName="Id_delit" />
+          <ScalarProperty Name="nom_delit" ColumnName="nom_delit" />
+          <ScalarProperty Name="CRIMINELId_crim" ColumnName="CRIMINELId_crim" />
+          <ScalarProperty Name="lieu_delit" ColumnName="lieu_delit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DOCUMENTS">
+      <EntityTypeMapping TypeName="IsTypeOf(GuardianModel.DOCUMENTS)">
+        <MappingFragment StoreEntitySet="DOCUMENTS">
+          <ScalarProperty Name="Id_doc" ColumnName="Id_doc" />
+          <ScalarProperty Name="doc" ColumnName="doc" />
+          <ScalarProperty Name="PLAINTEId_aff" ColumnName="PLAINTEId_aff" />
+          <ScalarProperty Name="docname" ColumnName="docname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOG">
+      <EntityTypeMapping TypeName="IsTypeOf(GuardianModel.LOG)">
+        <MappingFragment StoreEntitySet="LOG">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="identifiant_log" ColumnName="identifiant_log" />
+          <ScalarProperty Name="nom_log" ColumnName="nom_log" />
+          <ScalarProperty Name="grade" ColumnName="grade" />
+          <ScalarProperty Name="date_log" ColumnName="date_log" />
+          <ScalarProperty Name="user_photo" ColumnName="user_photo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PLAIGNANT">
+      <EntityTypeMapping TypeName="IsTypeOf(GuardianModel.PLAIGNANT)">
+        <MappingFragment StoreEntitySet="PLAIGNANT">
+          <ScalarProperty Name="Id_plaignant" ColumnName="Id_plaignant" />
+          <ScalarProperty Name="nom_plai" ColumnName="nom_plai" />
+          <ScalarProperty Name="prenom_plai" ColumnName="prenom_plai" />
+          <ScalarProperty Name="contact_plai" ColumnName="contact_plai" />
+          <ScalarProperty Name="adress_plai" ColumnName="adress_plai" />
+          <ScalarProperty Name="professi_plai" ColumnName="professi_plai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PLAINTE">
+      <EntityTypeMapping TypeName="IsTypeOf(GuardianModel.PLAINTE)">
+        <MappingFragment StoreEntitySet="PLAINTE">
+          <ScalarProperty Name="Id_aff" ColumnName="Id_aff" />
+          <ScalarProperty Name="descrip_aff" ColumnName="descrip_aff" />
+          <ScalarProperty Name="cause_aff" ColumnName="cause_aff" />
+          <ScalarProperty Name="professconvo" ColumnName="professconvo" />
+          <ScalarProperty Name="nom_convoc" ColumnName="nom_convoc" />
+          <ScalarProperty Name="PLAIGNANTId_plaignant" ColumnName="PLAIGNANTId_plaignant" />
+          <ScalarProperty Name="code_aff" ColumnName="code_aff" />
+          <ScalarProperty Name="date_aff" ColumnName="date_aff" />
+          <ScalarProperty Name="classe" ColumnName="classe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USER">
+      <EntityTypeMapping TypeName="IsTypeOf(GuardianModel.USER)">
+        <MappingFragment StoreEntitySet="USER">
+          <ScalarProperty Name="id_user" ColumnName="id_user" />
+          <ScalarProperty Name="nom_user" ColumnName="nom_user" />
+          <ScalarProperty Name="prenom_user" ColumnName="prenom_user" />
+          <ScalarProperty Name="dob_user" ColumnName="dob_user" />
+          <ScalarProperty Name="mail_user" ColumnName="mail_user" />
+          <ScalarProperty Name="contact" ColumnName="contact" />
+          <ScalarProperty Name="grade_user" ColumnName="grade_user" />
+          <ScalarProperty Name="identifiant_user" ColumnName="identifiant_user" />
+          <ScalarProperty Name="psswrd_user" ColumnName="psswrd_user" />
+          <ScalarProperty Name="photo_user" ColumnName="photo_user" />
+          <ScalarProperty Name="actif" ColumnName="actif" />
+          <ScalarProperty Name="profil" ColumnName="profil" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AdresseSet">
+      <EntityTypeMapping TypeName="IsTypeOf(GuardianModel.Adresse)">
+        <MappingFragment StoreEntitySet="AdresseSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="pays" ColumnName="pays" />
+          <ScalarProperty Name="ville" ColumnName="ville" />
+          <ScalarProperty Name="quartier" ColumnName="quartier" />
+          <ScalarProperty Name="latitude" ColumnName="latitude" />
+          <ScalarProperty Name="longitude" ColumnName="longitude" />
+          <ScalarProperty Name="altitude" ColumnName="altitude" />
+          <ScalarProperty Name="precision" ColumnName="precision" />
+          <ScalarProperty Name="CRIMINELId_crim" ColumnName="CRIMINELId_crim" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

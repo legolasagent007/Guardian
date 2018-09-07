@@ -1,0 +1,256 @@
+﻿<controls:MetroWindow
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+       xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+       xmlns:dxm="http://schemas.devexpress.com/winfx/2008/xaml/map"  xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"  x:Class="Guardian.Criminel"
+       Title="Criminel" Height="934.893" Width="1588.446" Icon="Image/animal-un-bogue-insectes-icone-4981.ico" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Closing="MetroWindow_Closing">
+    <controls:MetroWindow.RightWindowCommands>
+        <controls:WindowCommands>
+            <Button>
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Width="20" Height="20"
+                   Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}}}">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Fill"
+                         Visual="{StaticResource appbar_cupcake}" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                </StackPanel>
+            </Button>
+        </controls:WindowCommands>
+    </controls:MetroWindow.RightWindowCommands>
+    <Grid>
+        <controls:MetroTabControl x:Name="crim_tabcontrol" Margin="10" TabStripPlacement="Left" IsSynchronizedWithCurrentItem="True">
+            <controls:MetroTabItem x:Name="newcrim" Header="Créer criminel" ToolTip="Créer un nouveau criminel" Loaded="newcrim_Loaded">
+                <Grid x:Name="tabcrer" Background="#FFB8B8B8">
+                    <GroupBox x:Name="gbid" Header="Information  sur l'individu" HorizontalAlignment="Left" Height="308" Margin="24,10,0,0" VerticalAlignment="Top" Width="992" ToolTip="Remplissez les informations suivantes">
+                        <Grid>
+
+                            <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="160" Margin="814,10,0,0" VerticalAlignment="Top" Width="155" CornerRadius="3">
+                                <Image x:Name="crimimg" HorizontalAlignment="Left" Height="160" Margin="-1" VerticalAlignment="Top" Width="155"/>
+                            </Border>
+                            <Button x:Name="imgbt" Content="Importer une image" HorizontalAlignment="Left" Height="39" Margin="814,198,0,0" VerticalAlignment="Top" Width="155" IsDefault="True" ToolTip="Cliquez pour aller chercher une image " Click="imgbt_Click"/>
+                            <Label x:Name="lbnom" Content="Nom" HorizontalAlignment="Left" Height="28" Margin="131,64,0,0" VerticalAlignment="Top" Width="46" FontFamily="Arial" FontSize="14"/>
+                            <TextBox x:Name="tbnom" HorizontalAlignment="Left" Height="28" Margin="196,64,0,0" VerticalAlignment="Top" Width="187" FontFamily="Arial" FontSize="14"/>
+                            <Label x:Name="lbpren" Content="Prenom" HorizontalAlignment="Left" Height="28" Margin="116,102,0,0" VerticalAlignment="Top" Width="61" FontFamily="Arial" FontSize="14"/>
+                            <Label x:Name="lbDOB" Content="Date de naissance" HorizontalAlignment="Left" Height="28" Margin="44,152,0,0" VerticalAlignment="Top" Width="133" FontFamily="Arial" FontSize="14"/>
+                            <Label x:Name="lbjob" Content="Profession" HorizontalAlignment="Left" Height="28" Margin="475,10,0,0" VerticalAlignment="Top" Width="76" FontFamily="Arial" FontSize="14"/>
+                            <Label x:Name="lbDOB_Copy" Content="Nationalité" HorizontalAlignment="Left" Height="28" Margin="475,64,0,0" VerticalAlignment="Top" Width="76" FontFamily="Arial" FontSize="14"/>
+                            <Label x:Name="lbDOB_Copy1" Content="Contact" HorizontalAlignment="Left" Height="28" Margin="492,127,0,0" VerticalAlignment="Top" Width="59" FontFamily="Arial" FontSize="14"/>
+                            <CheckBox x:Name="deffere" Content="DEFFERE" HorizontalAlignment="Left" Height="31" Margin="260,228,0,0" VerticalAlignment="Top" Width="123" FontFamily="Arial" FontSize="14" Background="White" Foreground="#FFE01515" ToolTip="Précisez si le criminel est défféré ou pas"/>
+                            <TextBox x:Name="tbpren" HorizontalAlignment="Left" Height="28" Margin="196,102,0,0" VerticalAlignment="Top" Width="187" FontFamily="Arial" FontSize="14"/>
+                            <ComboBox x:Name="cbnatio" HorizontalAlignment="Left" Margin="570,64,0,0" VerticalAlignment="Top" Width="172" IsSynchronizedWithCurrentItem="True" Height="28" IsEditable="True">
+                                <ComboBoxItem Content="Togolaise"/>
+                                <ComboBoxItem Content="Beninoise"/>
+                                <ComboBoxItem Content="Ghannéenne"/>
+                                <ComboBoxItem Content="Burkinabaise"/>
+                                <ComboBoxItem Content="Ivoirienne"/>
+                                <ComboBoxItem Content="Camerounaise"/>
+                                <ComboBoxItem Content="Française"/>
+                                <ComboBoxItem Content="Nigériane"/>
+                            </ComboBox>
+                            <TextBox x:Name="tbcontact" HorizontalAlignment="Left" Height="28" Margin="570,127,0,0" VerticalAlignment="Top" Width="172" FontFamily="Arial" FontSize="14" TextChanged="tbcontact_TextChanged" ToolTip="Précisez l'indicatif dans le contact du criminel"/>
+                            <TextBox x:Name="tbjob" HorizontalAlignment="Left" Height="28" Margin="570,10,0,0" VerticalAlignment="Top" Width="172" FontFamily="Arial" FontSize="14"/>
+                            <DatePicker x:Name="dtDOB" HorizontalAlignment="Left" Height="28" Margin="196,152,0,0" VerticalAlignment="Top" Width="187" SelectedDateChanged="dtDOB_SelectedDateChanged" ToolTip="si aucune date n'est précisé, la date du jour sera prise par défaut"/>
+                            <Label x:Name="lbtyppc" Content="Type de pièce d'identité" HorizontalAlignment="Left" Height="28" Margin="15,195,0,0" VerticalAlignment="Top" Width="162" FontFamily="Arial" FontSize="14"/>
+                            <ComboBox x:Name="cbtyppc" HorizontalAlignment="Left" Margin="196,195,0,0" VerticalAlignment="Top" Width="187" IsSynchronizedWithCurrentItem="True" Height="28" IsEditable="True">
+                                <ComboBoxItem Content="Carte d'identité"/>
+                                <ComboBoxItem Content="Carte d'électeur"/>
+                                <ComboBoxItem Content="Passeport"/>
+                                <ComboBoxItem Content="Permis de conduire"/>
+                            </ComboBox>
+                            <Label x:Name="lbnumb" Content="Numéro de la pièce" HorizontalAlignment="Left" Height="28" Margin="419,176,0,0" VerticalAlignment="Top" Width="132" FontFamily="Arial" FontSize="14"/>
+                            <xctk:MaskedTextBox x:Name="tbnumpc" Margin="570,176,198,61" ToolTip="numero de la pièce d'identité" BeepOnError="True" Mask="0000-00-0000"/>
+                            <Label x:Name="lbregister" Content="Date d'enregistrement" HorizontalAlignment="Left" Height="28" Margin="401,231,0,0" VerticalAlignment="Top" Width="150" FontFamily="Arial" FontSize="14"/>
+                            <DatePicker x:Name="dtenreg" Margin="570,227,198,10" SelectedDateFormat="Long" FontFamily="Arial" FontSize="14" SelectedDateChanged="dtenreg_SelectedDateChanged" ToolTip="si aucune date n'est précisé, la date du jour sera prise par défaut"/>
+                            <TextBox x:Name="tbmatricul" HorizontalAlignment="Left" Height="28" Margin="196,10,0,0" VerticalAlignment="Top" Width="187" FontFamily="Arial" FontSize="14" TextChanged="tbmatricul_TextChanged" ToolTip="Matricul à attribuer au ciminel"/>
+                            <Label x:Name="lbmatri" Content="Matricule" HorizontalAlignment="Left" Height="28" Margin="101,10,0,0" VerticalAlignment="Top" Width="76" FontFamily="Arial" FontSize="14"/>
+                            <Label x:Name="lbobligatoire_Copy" Content="*" HorizontalAlignment="Left" Height="28" Margin="383,64,0,0" VerticalAlignment="Top" Width="15" ToolTip="Champ obligatoire" FontWeight="Bold" FontFamily="Arial" FontSize="14" Background="#FFC5BCBC" Foreground="#FFE61717"/>
+                            <Label x:Name="lbobligatoire_Copy1" Content="*" HorizontalAlignment="Left" Height="28" Margin="383,102,0,0" VerticalAlignment="Top" Width="15" ToolTip="Champ obligatoire" FontWeight="Bold" FontFamily="Arial" FontSize="14" Background="#FFC5BCBC" Foreground="#FFE61717"/>
+                            <Label x:Name="lbobligatoire_Copy2" Content="*" HorizontalAlignment="Left" Height="28" Margin="383,153,0,0" VerticalAlignment="Top" Width="15" ToolTip="Champ obligatoire" FontWeight="Bold" FontFamily="Arial" FontSize="14" Background="#FFC5BCBC" Foreground="#FFE61717"/>
+                            <Label x:Name="lbobligatoire_Copy3" Content="*" HorizontalAlignment="Left" Height="28" Margin="742,64,0,0" VerticalAlignment="Top" Width="15" ToolTip="Champ obligatoire" FontWeight="Bold" FontFamily="Arial" FontSize="14" Background="#FFC5BCBC" Foreground="#FFE61717"/>
+                            <Label x:Name="lbobligatoire_Copy4" Content="*" HorizontalAlignment="Left" Height="28" Margin="335,318,0,-77" VerticalAlignment="Top" Width="15" ToolTip="Champ obligatoire" FontWeight="Bold" FontFamily="Arial" FontSize="14" Background="#FFC5BCBC" Foreground="#FFE61717"/>
+                            <Label x:Name="lbobligatoire_Copy5" Content="*" HorizontalAlignment="Left" Height="28" Margin="335,366,0,-125" VerticalAlignment="Top" Width="15" ToolTip="Champ obligatoire" FontWeight="Bold" FontFamily="Arial" FontSize="14" Background="#FFC5BCBC" Foreground="#FFE61717"/>
+                            <Label x:Name="lbobligatoire_Copy6" Content="*" HorizontalAlignment="Left" Height="28" Margin="335,413,0,-172" VerticalAlignment="Top" Width="15" ToolTip="Champ obligatoire" FontWeight="Bold" FontFamily="Arial" FontSize="14" Background="#FFC5BCBC" Foreground="#FFE61717"/>
+                            <Label x:Name="lbobligatoire_Copy7" Content="*" HorizontalAlignment="Left" Height="28" Margin="383,153,0,0" VerticalAlignment="Top" Width="15" ToolTip="Champ obligatoire" FontWeight="Bold" FontFamily="Arial" FontSize="14" Background="#FFC5BCBC" Foreground="#FFE61717"/>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Header="liste des délits commis" HorizontalAlignment="Left" Height="227" Margin="23,575,0,0" VerticalAlignment="Top" Width="717" ToolTip="Précisez les délits commis">
+                        <Grid>
+
+                            <DataGrid x:Name="dgriddelit" HorizontalAlignment="Left" Height="182" Margin="274,10,0,-4" VerticalAlignment="Top" Width="248" ToolTip="Liste des délits commis" IsSynchronizedWithCurrentItem="True" Style="{StaticResource AzureDataGrid}" GridLinesVisibility="All" FontFamily="Arial" FontSize="14" SelectionMode="Single" HorizontalGridLinesBrush="#FF3838DA" VerticalGridLinesBrush="#FF18188B" AddingNewItem="dgriddelit_AddingNewItem"/>
+                            <Label Content="Délit commis" HorizontalAlignment="Left" Height="30" Margin="4,10,0,0" VerticalAlignment="Top" Width="92" FontFamily="Arial" FontSize="14"/>
+                            <ComboBox x:Name="cbdelit" HorizontalAlignment="Left" Height="30" Margin="102,10,0,0" VerticalAlignment="Top" Width="167" IsEditable="True">
+                                <ComboBoxItem Content="Vol"/>
+                                <ComboBoxItem Content="Escroquerie"/>
+                                <ComboBoxItem Content="Agression avec arme"/>
+                                <ComboBoxItem Content="Braquage à main armé"/>
+                                <ComboBoxItem Content="Détournement de fonds"/>
+                                <ComboBoxItem Content="Meurtre "/>
+                                <ComboBoxItem Content="Viol"/>
+                                <ComboBoxItem Content="kidnapping"/>
+                                <ComboBoxItem Content="Faux et usage de faux"/>
+                                <ComboBoxItem Content="Conduite en état d'ivresse"/>
+                            </ComboBox>
+                            <Button x:Name="btvalider" Content="Valider" HorizontalAlignment="Left" Height="28" Margin="102,63,0,0" VerticalAlignment="Top" Width="113" ToolTip="Ajouter un nouveau délit" Click="btvalider_Click"/>
+                            <Button x:Name="btsuppdeli" Content="Supprimer " HorizontalAlignment="Left" Height="28" Margin="102,115,0,0" VerticalAlignment="Top" Width="113" ToolTip="Supprimer un des délits du tableau" Click="btsuppdeli_Click"/>
+                            <TextBox x:Name="tblieudeli" HorizontalAlignment="Left" Height="40" Margin="537,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="168" ToolTip="lieu du délit"/>
+                            <Label Content="Précisez le lieu du délit" HorizontalAlignment="Left" Height="36" Margin="537,15,0,0" VerticalAlignment="Top" Width="158" FontFamily="arial" FontSize="14"/>
+
+                        </Grid>
+                    </GroupBox>
+                    <Button x:Name="btenregcrim" Content="Enregistrer le criminel" HorizontalAlignment="Left" Height="41" Margin="386,820,0,0" VerticalAlignment="Top" Width="234" FontFamily="Arial" FontSize="14" ToolTip="valider l'enregistrement" IsDefault="True" Click="btenregcrim_Click"/>
+                    <Button x:Name="btannulcrim" Content="Annuler" HorizontalAlignment="Left" Height="41" Margin="20,820,0,0" VerticalAlignment="Top" Width="172" FontFamily="Arial" FontSize="14" Click="btannulcrim_Click" ToolTip="Annuler l'enregistrement du criminel"/>
+                    <GroupBox x:Name="gbcomplmt" Header="Compléments" HorizontalAlignment="Left" Height="227" Margin="745,575,0,0" VerticalAlignment="Top" Width="213">
+                        <Grid>
+                            <Label x:Name="lbtaille" Content="Taille" HorizontalAlignment="Left" Height="30" Margin="0,22,0,0" VerticalAlignment="Top" Width="46" FontFamily="Arial" FontSize="14" ToolTip="Précisez la taille en cm"/>
+                            <controls:NumericUpDown x:Name="numtaille" Margin="46,10,61,134" ToolTip="Taille du criminel" FontFamily="Arial" FontSize="14" HideUpDownButtons="True"/>
+                            <Label x:Name="lbpoid" Content="Poids" HorizontalAlignment="Left" Height="30" Margin="-1,92,0,0" VerticalAlignment="Top" Width="46" FontFamily="Arial" FontSize="14" ToolTip="Précisez le poids du criminel"/>
+                            <controls:NumericUpDown x:Name="numpoid" Margin="45,80,62,64" ToolTip="Poids du criminel en Kg" FontFamily="Arial" FontSize="14" HideUpDownButtons="True"/>
+                            <Label x:Name="lbtaille_Copy" Content="cm" HorizontalAlignment="Left" Height="30" Margin="140,22,0,0" VerticalAlignment="Top" Width="51" FontFamily="Arial" FontSize="14" ToolTip="Précisez la taille en cm"/>
+                            <Label x:Name="lbtaille_Copy1" Content="Kg" HorizontalAlignment="Left" Height="30" Margin="140,92,0,0" VerticalAlignment="Top" Width="51" FontFamily="Arial" FontSize="14" ToolTip="Précisez la taille en kg"/>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Header="DONNEES DE LOCALISATION DU CRIMINEL" HorizontalAlignment="Left" Height="247" Margin="23,323,0,0" VerticalAlignment="Top" Width="993" RenderTransformOrigin="0.5,0.483">
+                        <Grid HorizontalAlignment="Left" Height="202" Margin="4,2,0,0" VerticalAlignment="Top" Width="972">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="10*"/>
+                                <ColumnDefinition Width="17*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Pays" HorizontalAlignment="Left" Height="43" Margin="30,5,0,0" VerticalAlignment="Top" Width="92" FontWeight="Bold" FontSize="14"/>
+                            <Label Content="Ville" HorizontalAlignment="Left" Height="44" Margin="30,53,0,0" VerticalAlignment="Top" Width="92" FontWeight="Bold" FontSize="14"/>
+                            <Label Content="Quartier" HorizontalAlignment="Left" Height="43" Margin="30,97,0,0" VerticalAlignment="Top" Width="92" FontWeight="Bold" FontSize="14"/>
+                            <Label Content="Précision" HorizontalAlignment="Left" Height="43" Margin="30,145,0,0" VerticalAlignment="Top" Width="92" FontWeight="Bold" FontSize="14"/>
+                            <ComboBox x:Name="cbbox_pays" HorizontalAlignment="Left" Height="31" Margin="127,5,0,0" VerticalAlignment="Top" Width="203" FontSize="14" ToolTip="Sélectionnez un pays de résidence" Loaded="cbbox_pays_Loaded"/>
+                            <TextBox x:Name="tbville" HorizontalAlignment="Left" Height="26" Margin="131,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="199"/>
+                            <TextBox x:Name="tbquartier" HorizontalAlignment="Left" Height="26" Margin="131,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="199"/>
+                            <Grid Grid.Column="1" HorizontalAlignment="Left" Height="136" Margin="357,10,-10,0" VerticalAlignment="Top" Width="265"/>
+                            <TextBox x:Name="tb_precision" HorizontalAlignment="Left" Height="26" Margin="131,146,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="199" controls:TextBoxHelper.Watermark="Une idée du lieu"/>
+                            <Label Content="Longitude" HorizontalAlignment="Left" Height="43" Margin="0,5,0,0" VerticalAlignment="Top" Width="92" FontWeight="Bold" FontSize="14" Grid.Column="1"/>
+                            <controls:NumericUpDown x:Name="tb_longit" Margin="77,5,364,166" Grid.Column="1" HideUpDownButtons="True" Value="6.180864"/>
+                            <Label Content="Latitude" HorizontalAlignment="Left" Height="44" Margin="0,53,0,0" VerticalAlignment="Top" Width="92" FontWeight="Bold" FontSize="14" Grid.Column="1"/>
+                            <Label Content="Altitude" HorizontalAlignment="Left" Height="26" Margin="0,97,0,0" VerticalAlignment="Top" Width="71" FontWeight="Bold" FontSize="14" Grid.Column="1"/>
+                            <controls:NumericUpDown x:Name="tb_latit" Margin="77,53,364,118" Grid.Column="1" HideUpDownButtons="True" Value="6.180864"/>
+                            <controls:NumericUpDown x:Name="tb_altit" Margin="77,97,364,74" Grid.Column="1" HideUpDownButtons="True" Value="6.180864"/>
+                            <Button x:Name="tbajout" Content="Ajouter" HorizontalAlignment="Left" Height="36" Margin="126,156,0,0" VerticalAlignment="Top" Width="122" Grid.Column="1" Click="tbajout_Click"/>
+                            <Button x:Name="tb_retire" Content="Retirer" Grid.Column="1" HorizontalAlignment="Left" Height="36" Margin="0,156,0,0" VerticalAlignment="Top" Width="82" Click="tb_retire_Click"/>
+                            <Label x:Name="lbobligatoire_Copy8" Content="*" HorizontalAlignment="Left" Height="28" Margin="248,7,0,0" VerticalAlignment="Top" Width="15" ToolTip="Champ obligatoire" FontWeight="Bold" FontFamily="Arial" FontSize="14" Background="#FFC5BCBC" Foreground="#FFE61717" Grid.Column="1"/>
+                            <Label x:Name="lbobligatoire_Copy9" Content="*" HorizontalAlignment="Left" Height="28" Margin="248,56,0,0" VerticalAlignment="Top" Width="15" ToolTip="Champ obligatoire" FontWeight="Bold" FontFamily="Arial" FontSize="14" Background="#FFC5BCBC" Foreground="#FFE61717" Grid.Column="1"/>
+                            <DataGrid x:Name="dgridlocalisation" Grid.Column="1" HorizontalAlignment="Left" Height="202" Margin="268,0,0,0" VerticalAlignment="Top" Width="344" SelectionChanged="dgridlocalisation_SelectionChanged" AutoGenerateColumns="False" Loaded="dgridlocalisation_Loaded" IsTextSearchEnabled="True" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Binding="{Binding lati}" ClipboardContentBinding="{x:Null}" Header="Latitude"/>
+                                    <DataGridTextColumn Binding="{Binding longi}" ClipboardContentBinding="{x:Null}" Header="Longitude"/>
+                                    <DataGridTextColumn Binding="{Binding alti}" ClipboardContentBinding="{x:Null}" Header="Altitude"/>
+                                    <DataGridTextColumn Binding="{Binding pays}" ClipboardContentBinding="{x:Null}" Header="Pays"/>
+                                    <DataGridTextColumn Binding="{Binding quartier}" ClipboardContentBinding="{x:Null}" Header="quartier"/>
+                                    <DataGridTextColumn Binding="{Binding ville}" ClipboardContentBinding="{x:Null}" Header="ville"/>
+                                    <DataGridTextColumn Binding="{Binding precision}" ClipboardContentBinding="{x:Null}" Header="precision"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </GroupBox>
+
+                </Grid>
+            </controls:MetroTabItem>
+            <controls:MetroTabItem Header="Liste des criminels">
+                <Grid x:Name="tablist" Background="#FFB8B8B8" Margin="0,0,0,6" ToolTip="Liste des différents criminels enregistrés dans la base">
+                    <DataGrid x:Name="listcrim"   HorizontalAlignment="Left" Height="760" Margin="12,70,0,0" VerticalAlignment="Top" Width="1244" IsSynchronizedWithCurrentItem="True" AutoGenerateColumns="False" AlternationCount="-7" Style="{StaticResource AzureDataGrid}" FontFamily="Arial" FontSize="10" IsTextSearchEnabled="True" GridLinesVisibility="All" AreRowDetailsFrozen="True" MinRowHeight="5" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" SelectionMode="Single" MouseDoubleClick="listcrim_MouseDoubleClick" CellEditEnding="listcrim_CellEditEnding" IsReadOnly="True" SelectionChanged="listcrim_SelectionChanged" RenderTransformOrigin="0.5,0.5">
+                        <DataGrid.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform AngleY="0.015"/>
+                                <RotateTransform/>
+                                <TranslateTransform Y="-0.001"/>
+                            </TransformGroup>
+                        </DataGrid.RenderTransform>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding id}" Visibility="Hidden"/>
+                            <DataGridTextColumn Binding="{Binding matricul}" Visibility="Hidden" ClipboardContentBinding="{x:Null}" Header="Matricule" Width="Auto"/>
+                            <DataGridTextColumn Binding="{Binding nom}" ClipboardContentBinding="{x:Null}" Header="Nom"/>
+                            <DataGridTextColumn Binding="{Binding prenom}" ClipboardContentBinding="{x:Null}" Header="Prénom"/>
+                            <DataGridTextColumn Binding="{Binding datenaiss}" ClipboardContentBinding="{x:Null}" Header="Date de naissance"/>
+                            <DataGridTextColumn Binding="{Binding contact}" ClipboardContentBinding="{x:Null}" Header="Contact"/>
+                            <DataGridTextColumn Binding="{Binding nation}" ClipboardContentBinding="{x:Null}" Header="Nationalité"/>
+                            <DataGridCheckBoxColumn  Binding="{Binding deffere_crim, Mode=OneWay}" ElementStyle="{DynamicResource MetroDataGridCheckBox}" EditingElementStyle="{DynamicResource MetroDataGridCheckBox}" ClipboardContentBinding="{x:Null}" Header="Défferé" IsReadOnly="True" />
+                            <DataGridTextColumn Binding="{Binding nom_deli}" ClipboardContentBinding="{x:Null}" Header="Délit commis"/>
+                            <DataGridTextColumn Binding="{Binding lieu_delit}" ClipboardContentBinding="{x:Null}" Header="Lieu du délit"/>
+                            <DataGridTextColumn Binding="{Binding lati}" ClipboardContentBinding="{x:Null}" Header="Latitude"/>
+                            <DataGridTextColumn Binding="{Binding longi}" ClipboardContentBinding="{x:Null}" Header="Longitude"/>
+                            <DataGridTemplateColumn ClipboardContentBinding="{Binding ''}" Header="Photo">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="{Binding photo}" Height="40" Width="40" Stretch="Uniform"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn Binding="{Binding poids}" ClipboardContentBinding="{x:Null}" Header="Poids (en Kg)"/>
+                            <DataGridTextColumn Binding="{Binding taille}" ClipboardContentBinding="{x:Null}" Header="Taille(en cm)"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button x:Name="btmodif" IsDefault="True" Content="Modifier" Margin="950,837,136,0" Height="35" VerticalAlignment="Top" ToolTip="Modifier la fiche sur le criminel" FontFamily="Arial" FontSize="14" Click="btmodif_Click"/>
+                    <Button x:Name="btrafraichi" Content="Raffraichir" Margin="418,835,686,0" Height="35" VerticalAlignment="Top" ToolTip="Raffraichir la liste des criminels" FontFamily="Arial" FontSize="14" Click="btrafraichi_Click"/>
+                    <Button x:Name="btrech" Content="Filtrer" HorizontalAlignment="Left" Height="26" Margin="867,25,0,0" VerticalAlignment="Top" Width="113" ToolTip="Filter la liste des criminels en fonction de paramètres" Click="btrech_Click"/>
+                    <TextBox x:Name="tbfiltmatr" HorizontalAlignment="Left" Height="17" Margin="142,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="107" TextChanged="tbfiltmatr_TextChanged"/>
+                    <TextBox x:Name="tbfiltrnom" HorizontalAlignment="Left" Height="26" Margin="396,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="109" TextChanged="tbfiltrnom_TextChanged"/>
+                    <Label Content="Nationalité" HorizontalAlignment="Left" Height="26" Margin="68,25,0,0" VerticalAlignment="Top" Width="74"/>
+                    <Label Content="Nom" HorizontalAlignment="Left" Height="26" Margin="353,25,0,0" VerticalAlignment="Top" Width="43"/>
+                    <Button x:Name="btannulfilt" Content="Annuler" HorizontalAlignment="Left" Height="26" Margin="724,25,0,0" VerticalAlignment="Top" Width="83" Click="Button_Click"/>
+                    <Button Content="Localiser sur carte" HorizontalAlignment="Left" Height="33" Margin="82,837,0,0" VerticalAlignment="Top" Width="154" Background="#FF38C2F5"/>
+                </Grid>
+            </controls:MetroTabItem>
+            <controls:MetroTabItem Header="Divers états" FontFamily="Arial" FontSize="14" Margin="0,4,17,-4">
+                <Grid x:Name="etat" Background="#FFB8B8B8" Margin="0,0,0,6" ToolTip="Liste des différents criminels enregistrés dans la base">
+                    <Button x:Name="btetat1" Content="Liste des criminels enregistrés dans guardian" HorizontalAlignment="Left" Height="100" Margin="60,46,0,0" VerticalAlignment="Top" Width="383" Click="btetat1_Click"/>
+                    <Button x:Name="btetat2" Content="Fiche descriptive d'un criminel en particulier" HorizontalAlignment="Left" Height="100" Margin="545,46,0,0" VerticalAlignment="Top" Width="362" ToolTip="cliquer pour avoir la fiche descriptive d'un criminel" FontFamily="Arial" Click="btetat2_Click"/>
+                    <Button x:Name="btetat3" Content="Liste des ciminels avec leur délits classés par nationalité" HorizontalAlignment="Left" Height="99" Margin="60,350,0,0" VerticalAlignment="Top" Width="383" FontFamily="Arial" Click="btetat3_Click"/>
+
+                </Grid>
+            </controls:MetroTabItem>
+            <TabItem x:Name="tbmap" Header="Localisation Criminels" HorizontalAlignment="Left" Height="39" VerticalAlignment="Top" Width="266" FontSize="10" Margin="0,0,-43,0">
+                <Grid Background="#FFE5E5E5">
+                    <dxm:MapControl x:Name="carte_criminels" HorizontalAlignment="Left" Height="830" Margin="10,46,0,0" VerticalAlignment="Top" Width="1276" CenterPoint="45, 18" ZoomLevel="15" ToolTipEnabled="True" TextOptions.TextHintingMode="Animated" Loaded="carte_criminels_Loaded">
+                        <dxm:MapControl.PrintOptions>
+                            <dxm:MapPrintOptions PrintMiniMap="True"/>
+                        </dxm:MapControl.PrintOptions>
+
+                        <dxm:MapControl.MiniMap>
+                            <dxm:MiniMap Alignment="BottomRight">
+                                <dxm:MiniMap.Behavior>
+                                    <dxm:DynamicMiniMapBehavior/>
+                                </dxm:MiniMap.Behavior>
+                                <dxm:MiniMapImageTilesLayer>
+                                    <dxm:BingMapDataProvider BingKey="cQYFuSValWnct8kgz0WU~yyovoyehqz97kWCdmbrUwg~AsRlS1Da-P1JSecYHKgOlnt1NKjM8DxJeCiLp5zBtEdDV5bZQPyjqvJsrIufdTNu"/>
+                                </dxm:MiniMapImageTilesLayer>
+                            </dxm:MiniMap>
+                        </dxm:MapControl.MiniMap>
+                        <dxm:ImageLayer>
+                            <dxm:BingMapDataProvider BingKey="cQYFuSValWnct8kgz0WU~yyovoyehqz97kWCdmbrUwg~AsRlS1Da-P1JSecYHKgOlnt1NKjM8DxJeCiLp5zBtEdDV5bZQPyjqvJsrIufdTNu"/>
+                        </dxm:ImageLayer>
+                        <dxm:InformationLayer Name="recherche" >
+                            <!--<dxm:BingSearchDataProvider x:Name="mapresearch" BingKey="cQYFuSValWnct8kgz0WU~yyovoyehqz97kWCdmbrUwg~AsRlS1Da-P1JSecYHKgOlnt1NKjM8DxJeCiLp5zBtEdDV5bZQPyjqvJsrIufdTNu" SearchCompleted="mapresearch_SearchCompleted"/>-->
+                        </dxm:InformationLayer>
+
+                        <dxm:VectorLayer Loaded="VectorLayer_Loaded">
+                            <dxm:MapItemStorage x:Name="mapItems" >
+
+
+                            </dxm:MapItemStorage>
+                        </dxm:VectorLayer>
+
+                    </dxm:MapControl>
+
+                    <dx:SimpleButton x:Name="btprintcrims" Content="Imprimer" HorizontalAlignment="Left" Height="34" Margin="1098,4,0,0" VerticalAlignment="Top" Width="156" Click="btprintcrims_Click" Foreground="Black"/>
+
+                </Grid>
+            </TabItem>
+        </controls:MetroTabControl>
+
+
+    </Grid>
+</controls:MetroWindow>

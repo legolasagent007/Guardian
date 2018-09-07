@@ -1,0 +1,12 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:dxp="http://schemas.devexpress.com/winfx/2008/xaml/printing" 
+        xmlns:dxm="http://schemas.devexpress.com/winfx/2008/xaml/map" xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" xmlns:dxrud="http://schemas.devexpress.com/winfx/2008/xaml/reports/userdesigner" x:Class="Guardian.Etats.Liste_criminels" 
+        Title="Liste criminels" Height="490" Width="710" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+    <Grid Margin="0,0,4,0">
+
+        <dxp:DocumentPreviewControl x:Name="documentpreview1" AutoShowDocumentMap="False" AutoShowParametersPanel="False"></dxp:DocumentPreviewControl>
+
+    </Grid>
+</Window>

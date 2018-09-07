@@ -1,0 +1,8 @@
+﻿<Window xmlns:dxp="http://schemas.devexpress.com/winfx/2008/xaml/printing"  x:Class="Guardian.Etats.Criminels_et_délits"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Criminels et leurs délits" Height="554" Width="784" WindowStartupLocation="CenterScreen" SizeToContent="WidthAndHeight" Loaded="Window_Loaded">
+    <Grid>
+        <dxp:DocumentPreviewControl x:Name="documentpreview2" AutoShowDocumentMap="False" AutoShowParametersPanel="False" />
+    </Grid>
+</Window>

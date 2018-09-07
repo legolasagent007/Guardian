@@ -1,0 +1,8 @@
+﻿<Window xmlns:dxp="http://schemas.devexpress.com/winfx/2008/xaml/printing"  x:Class="Guardian.Etats_affaire.Liste_affaire"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Liste affaire" Height="599" Width="604" Icon="/Guardian;component/Image/animal-un-bogue-insectes-icone-4981.ico" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+    <Grid>
+        <dxp:DocumentPreviewControl x:Name="documentpreview" AutoShowDocumentMap="False" AutoShowParametersPanel="False" CommandBarStyle="Ribbon" />
+    </Grid>
+</Window>
